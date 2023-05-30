@@ -1,3 +1,4 @@
+import 'package:expense/constants/dimension.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../models/database_provider.dart';
@@ -38,12 +39,12 @@ class _CategoryFetcherState extends State<CategoryFetcher> {
             return Center(child: Text(snapshot.error.toString()));
           } else {
             return Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20.0),
+              padding: EdgeInsets.symmetric(horizontal: Dimensions.height20),
               child: Column(
                 children: [
-                  const SizedBox(
-                    height: 250.0,
-                    child: TotalChart(),
+                  SizedBox(
+                    height: Dimensions.height250,
+                    child: const TotalChart(),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,

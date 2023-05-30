@@ -20,8 +20,12 @@ class CategoryCard extends StatelessWidget {
         padding: const EdgeInsets.all(8.0),
         child: Icon(category.icon),
       ),
-      title: Text(category.title),
-      subtitle: Text('entries: ${category.entries}'),
+      title: Text(category.title,style:const TextStyle(
+        fontWeight: FontWeight.bold
+      ),),
+      subtitle: Text('entries: ${category.entries}',style:const TextStyle(
+          fontWeight: FontWeight.w500
+      ),),
       trailing: Text(NumberFormat.currency(locale: 'en_IN', symbol: '₹')
           .format(category.totalAmount)),
     );

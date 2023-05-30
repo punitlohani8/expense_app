@@ -41,6 +41,9 @@ dependencies:
   intl: ^0.17.0
   fl_chart: ^0.55.2
   lottie: ^2.3.2
+  pinput: ^2.2.31
+  shared_preferences: ^2.1.1
+  get: ^4.6.5
 
 
 dev_dependencies:
@@ -68,6 +71,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/json/
+    - assets/image/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

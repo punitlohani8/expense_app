@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:intl/intl.dart';
+import '../../constants/dimension.dart';
 import '../../models/database_provider.dart';
 
 class ExpenseChart extends StatefulWidget {
@@ -29,7 +30,7 @@ class _ExpenseChartState extends State<ExpenseChart> {
                 barRods: [
                   BarChartRodData(
                     toY: e['amount'],
-                    width: 20.0,
+                    width: Dimensions.width20,
                     borderRadius: BorderRadius.zero,
                   ),
                 ],

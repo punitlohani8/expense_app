@@ -1,7 +1,10 @@
 import 'dart:async';
 
+import 'package:expense/constants/dimension.dart';
+import 'package:expense/screens/pass_code.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'category_screen.dart';
 
@@ -13,22 +16,35 @@ class Splash extends StatefulWidget {
 }
 
 class _SplashState extends State<Splash> {
-  static const name = '/splash';
+
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
+
     Timer(const Duration(seconds: 10), () {
-      Navigator.pushReplacement(context, MaterialPageRoute(builder:(context) =>const CategoryScreen(),));
+      Navigator.pushReplacement(context, MaterialPageRoute(builder:(context) => const CategoryScreen()));
+      // (getIsPassWord())?const PassCode(): const CategoryScreen(),));
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        color: Colors.black,
-        alignment: Alignment.center,
-        child: Lottie.asset('assets/json/animation.json'),
+      backgroundColor: Colors.black,
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Container(
+            color: Colors.black,
+            alignment: Alignment.center,
+            child: Lottie.asset('assets/json/animation.json'),
+          ),
+
+          Text('ExpenceMate', style: TextStyle(fontWeight: FontWeight.bold,fontSize: Dimensions.font26,color: Colors.orangeAccent),),
+          Text('Version 1.0.0', style: TextStyle(fontWeight: FontWeight.bold,fontSize: Dimensions.font12,color: Colors.white60),),
+
+
+        ],
       ),
     );
   }

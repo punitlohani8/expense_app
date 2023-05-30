@@ -1,3 +1,4 @@
+import 'package:expense/constants/dimension.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../models/database_provider.dart';
@@ -25,7 +26,7 @@ class ConfirmBox extends StatelessWidget {
             },
             child: const Text('Don\'t delete'),
           ),
-          const SizedBox(width: 5.0),
+          SizedBox(width: Dimensions.width5),
           ElevatedButton(
             onPressed: () {
               Navigator.of(context).pop(true); // delete

@@ -1,11 +1,14 @@
+import 'package:expense/screens/pass_code.dart';
 import 'package:expense/screens/splash.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:provider/provider.dart';
 import './models/database_provider.dart';
 // screens
 import './screens/category_screen.dart';
 import './screens/expense_screen.dart';
 import './screens/all_expenses.dart';
+import 'constants/dimension.dart';
 
 void main() {
   runApp(ChangeNotifierProvider(
@@ -19,7 +22,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       home: const Splash(),
       //initialRoute: CategoryScreen.name,

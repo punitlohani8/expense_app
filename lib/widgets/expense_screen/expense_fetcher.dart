@@ -1,3 +1,4 @@
+import 'package:expense/constants/dimension.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -40,7 +41,7 @@ class _ExpenseFetcherState extends State<ExpenseFetcher> {
               child: Column(
                 children: [
                   SizedBox(
-                    height: 250.0,
+                    height: Dimensions.height250,
                     child: ExpenseChart(widget.category),
                   ),
                   const Expanded(child: ExpenseList()),

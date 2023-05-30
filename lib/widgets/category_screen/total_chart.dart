@@ -1,3 +1,4 @@
+import 'package:expense/constants/dimension.dart';
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:intl/intl.dart';
@@ -36,22 +37,22 @@ class _TotalChartState extends State<TotalChart> {
                     ),
                   ),
                 ),
-                const SizedBox(height: 8.0),
+                SizedBox(height: Dimensions.height10),
                 ...list.map(
                   (e) => Padding(
-                    padding: const EdgeInsets.all(3.0),
+                    padding: EdgeInsets.all(Dimensions.height5),
                     child: Row(
                       children: [
                         Container(
-                          width: 8.0,
-                          height: 8.0,
+                          width: Dimensions.width8,
+                          height: Dimensions.height8,
                           color: Colors.primaries[list.indexOf(e)],
                         ),
-                        const SizedBox(width: 5.0),
+                        SizedBox(width: Dimensions.width5),
                         Text(
                           e.title,
                         ),
-                        const SizedBox(width: 5.0),
+                        SizedBox(width: Dimensions.width5),
                         Text(total == 0
                             ? '0%'
                             : '${((e.totalAmount / total) * 100).toStringAsFixed(2)}%'),
@@ -66,7 +67,7 @@ class _TotalChartState extends State<TotalChart> {
             flex: 40,
             child: PieChart(
               PieChartData(
-                centerSpaceRadius: 20.0,
+                centerSpaceRadius: Dimensions.radius20,
                 sections: total != 0
                     ? list
                         .map(

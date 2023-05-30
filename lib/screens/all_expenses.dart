@@ -13,6 +13,7 @@ class _AllExpensesState extends State<AllExpenses> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
       appBar: AppBar(title: const Text('All Expenses'),flexibleSpace: Container(
         decoration:const BoxDecoration(
             gradient: LinearGradient(colors: [

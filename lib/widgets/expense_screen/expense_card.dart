@@ -1,3 +1,4 @@
+import 'package:expense/constants/dimension.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../../models/expense.dart';
@@ -20,7 +21,7 @@ class ExpenseCard extends StatelessWidget {
       },
       child: ListTile(
         leading: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: EdgeInsets.all(Dimensions.height10),
           child: Icon(icons[exp.category]),
         ),
         title: Text(exp.title),

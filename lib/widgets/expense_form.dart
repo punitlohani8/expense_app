@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
+import '../constants/dimension.dart';
 import '../models/database_provider.dart';
 import '../constants/icons.dart';
 import '../models/expense.dart';
@@ -39,7 +40,7 @@ class _ExpenseFormState extends State<ExpenseForm> {
     final provider = Provider.of<DatabaseProvider>(context, listen: false);
     return Container(
       height: MediaQuery.of(context).size.height * 0.7,
-      padding: const EdgeInsets.all(20.0),
+      padding: EdgeInsets.all(Dimensions.height20),
       child: SingleChildScrollView(
         child: Column(
           children: [
@@ -50,7 +51,7 @@ class _ExpenseFormState extends State<ExpenseForm> {
                 labelText: 'Title of expense',
               ),
             ),
-            const SizedBox(height: 20.0),
+            SizedBox(height: Dimensions.height20),
             // amount
             TextField(
               controller: _amount,
@@ -59,7 +60,7 @@ class _ExpenseFormState extends State<ExpenseForm> {
                 labelText: 'Amount of expense',
               ),
             ),
-            const SizedBox(height: 20.0),
+            SizedBox(height: Dimensions.height20),
             // date picker
             Row(
               children: [
@@ -74,7 +75,7 @@ class _ExpenseFormState extends State<ExpenseForm> {
                 ),
               ],
             ),
-            const SizedBox(height: 20.0),
+            SizedBox(height: Dimensions.height20),
             // category
             Row(
               children: [
@@ -99,26 +100,44 @@ class _ExpenseFormState extends State<ExpenseForm> {
                 ),
               ],
             ),
-            const SizedBox(height: 20.0),
-            ElevatedButton.icon(
-              onPressed: () {
-                if (_title.text != '' && _amount.text != '') {
-                  // create an expense
-                  final file = Expense(
-                    id: 0,
-                    title: _title.text,
-                    amount: double.parse(_amount.text),
-                    date: _date != null ? _date! : DateTime.now(),
-                    category: _initialValue,
-                  );
-                  // add it to database.
-                  provider.addExpense(file);
-                  // close the bottomsheet
-                  Navigator.of(context).pop();
-                }
-              },
-              icon: const Icon(Icons.add),
-              label: const Text('Add Expense'),
+            SizedBox(height: Dimensions.height20),
+            Container(
+              decoration:  BoxDecoration(
+                  gradient:const LinearGradient(colors: [
+                    Colors.blue,
+                    Colors.orangeAccent
+                  ],
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight),
+                borderRadius: BorderRadius.circular(Dimensions.radius10)
+              ),
+              child: ElevatedButton.icon(
+                style:ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all(Colors.transparent),
+                  elevation: MaterialStateProperty.all(0.0),
+
+                ),
+                onPressed: () {
+                  if (_title.text != '' && _amount.text != '') {
+                    // create an expense
+                    final file = Expense(
+                      id: 0,
+                      title: _title.text,
+                      amount: double.parse(_amount.text),
+                      date: _date != null ? _date! : DateTime.now(),
+                      category: _initialValue,
+                    );
+                    // add it to database.
+                    provider.addExpense(file);
+                    // close the bottomsheet
+                    Navigator.of(context).pop();
+                  }
+                },
+                
+                icon: const Icon(Icons.add),
+                label: const Text('Add Expense'),
+
+              ),
             ),
           ],
         ),

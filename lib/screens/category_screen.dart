@@ -1,5 +1,5 @@
-import 'dart:ffi';
-
+import 'package:expense/constants/dimension.dart';
+import 'package:expense/screens/pass_code.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import '../widgets/category_screen/category_fetcher.dart';
@@ -58,31 +58,64 @@ class CategoryScreen extends StatelessWidget {
           child: const Icon(Icons.add),
         ),
       ),
-      endDrawer: _drawer(),
+      endDrawer: _drawer(context: context),
     );
   }
-  Drawer _drawer(){
+  Drawer _drawer({required BuildContext context}){
     return Drawer(
 
       elevation: 11,
-      child: ListView(
-        children:[
-          DrawerHeader(
-            decoration: BoxDecoration(
-              color: Colors.blue,
-            ),
-            child: Text('Drawer Header'),
-          ),
-          ListTile(
-            title: Text('Category'),
-            trailing: IconButton(
-              icon:Icon( Icons.add),
-              onPressed: (){
+      child: Container(
+        decoration: BoxDecoration(
+            gradient:const LinearGradient(colors: [
+              Colors.blue,
+              Colors.orangeAccent
+            ],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight),
 
-              },
+            boxShadow: [
+              BoxShadow(color: Colors.grey,blurRadius: Dimensions.radius10,offset:Offset(Dimensions.radius5,Dimensions.radius5))
+            ]
+        ),
+        child: ListView(
+          children:[
+            DrawerHeader(
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.vertical(bottom: Radius.circular(Dimensions.radius20))
+              ),
+              child: Column(
+                children: [
+                  Image(image:const AssetImage('assets/image/logo.jpg'),width: Dimensions.width150,height: Dimensions.height100,),
+
+                  Text('ExpenseMate',style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: Dimensions.font26,
+                    color: Colors.black
+                  ),)
+
+                ],
+              ),
             ),
-          ),
-        ],
+            ListTile(
+              title: const Text('Category'),
+              trailing: IconButton(
+                icon: const Icon(Icons.add),
+                onPressed: (){}
+              ),
+            ),
+            ListTile(
+              title: const Text('PassCode'),
+              trailing: IconButton(
+                icon : const Icon(Icons.lock),
+                onPressed: (){
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const PassCode(),));
+                },
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
